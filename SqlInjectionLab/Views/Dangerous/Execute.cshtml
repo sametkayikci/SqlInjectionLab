@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "SQL Injection Lab";
+    var sqlVal = ViewContext.HttpContext.Request.Query["sql"].ToString();
+}
+
+<h2>SQL Injection Test Arayüzü</h2>
+
+<form method="get">
+    <label>SQL Komutu:</label><br />
+    <textarea id="sqlBox" name="sql" style="width:100%;height:120px;">@sqlVal</textarea>
+    <br /><br />
+    <button type="submit" class="btn btn-danger">Çalıştır</button>
+</form>
+
+<hr />
+
+<h3>SQL Injection Payload’ları</h3>
+<p>Tıkla → payload yukarıdaki textbox’a otomatik gelir.</p>
+
+<style>
+    .payload-box {
+        border: 1px solid #ccc;
+        padding: 8px;
+        margin: 5px 0;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .payload-box:hover {
+            background: #f1f1f1;
+        }
+</style>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    SELECT * FROM users WHERE id = 1 OR 1=1;
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    SELECT * FROM users WHERE username = 'samet' AND 1=1;
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    SELECT * FROM users WHERE username = '' OR '1'='1';
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    DELETE FROM users WHERE id = 1 OR 1=1;
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    DROP TABLE users;
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    SELECT pg_sleep(5);
+</div>
+
+<div onclick="applyPayload(this)" class="payload-box">
+    SELECT * FROM users; DROP TABLE users; SELECT 'done';
+</div>
+
+<script>
+    function applyPayload(el) {
+        document.getElementById("sqlBox").value = el.innerText.trim();
+    }
+</script>
+
+@if (ViewBag.Result != null)
+{
+    <hr />
+    <h3>Sonuç</h3>
+    <div>@Html.Raw(ViewBag.Result)</div>
+}

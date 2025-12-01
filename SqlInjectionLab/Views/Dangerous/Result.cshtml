@@ -1,0 +1,33 @@
+﻿@{
+    var table = ViewBag.Table as System.Data.DataTable;
+}
+
+<h2>SQL Sonucu</h2>
+
+<p>@ViewBag.Result</p>
+
+@if (table != null)
+{
+    <table border="1" cellpadding="4">
+        <thead>
+            <tr>
+                @foreach (System.Data.DataColumn col in table.Columns)
+                {
+                    <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (System.Data.DataRow row in table.Rows)
+            {
+                <tr>
+                    @foreach (var item in row.ItemArray)
+                    {
+                        <td>@item</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

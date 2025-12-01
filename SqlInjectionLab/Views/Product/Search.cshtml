@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Product>
+
+<h2>Ürün Arama</h2>
+
+<form class="card p-3 col-8" method="get">
+    <input name="q" class="form-control" placeholder="Arama terimi..." />
+    <button class="btn btn-success mt-3">Ara</button>
+</form>
+<hr />
+
+<table class="table table-bordered">
+    <thead><tr><th>ID</th><th>Ad</th><th>Fiyat</th></tr></thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<hr />
+<h4>Injection Payload</h4>
+<ul>
+    <li><code>' OR 1=1--</code></li>
+    <li><code>' UNION SELECT id,username,0 FROM users--</code></li>
+</ul>

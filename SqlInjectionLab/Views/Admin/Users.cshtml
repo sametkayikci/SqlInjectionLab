@@ -1,0 +1,23 @@
+﻿@model IEnumerable<User>
+
+<h2>Kullanıcılar</h2>
+
+<table class="table table-bordered">
+    <thead><tr><th>ID</th><th>Kullanıcı</th><th>Rol</th></tr></thead>
+    <tbody>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.Id</td>
+            <td>@u.Username</td>
+            <td>@u.Role</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<hr />
+
+<h4>Payload</h4>
+<ul>
+    <li><code>1 OR 1=1</code></li>
+</ul>

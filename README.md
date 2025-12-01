@@ -1,5 +1,5 @@
 # 🔐 SQL Injection Lab
-ASP.NET Core + MSSQL üzerinde SQL Injection saldırılarını anlamak, istismar etmek ve güvenli kodlama pratiklerini öğrenmek için hazırlanan eğitim projesi.
+ASP.NET Core + PostgreSQL üzerinde SQL Injection saldırılarını anlamak, istismar etmek ve güvenli kodlama pratiklerini öğrenmek için hazırlanan eğitim projesi.
 
 ## 🎯 Amaç
 Bu laboratuvar ile:
